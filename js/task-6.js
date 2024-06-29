@@ -8,7 +8,7 @@ createButton.addEventListener("click", function () {
     createBoxes(amount);
     inputEl.value = "";
   } else {
-    alert(`lalala`);
+    alert("Будь ласка, введіть число від 1 до 100.");
   }
 });
 
@@ -18,6 +18,8 @@ destroyButton.addEventListener("click", function () {
 
 function createBoxes(amount) {
   containerEl.textContent = "";
+  const fragment = document.createDocumentFragment();
+
   let size = 30;
   for (let i = 0; i < amount; i++) {
     const box = document.createElement(`div`);
@@ -25,9 +27,10 @@ function createBoxes(amount) {
     box.style.width = `${size}px`;
     box.style.backgroundColor = getRandomHexColor();
     box.style.margin = "10px";
-    containerEl.appendChild(box);
+    fragment.appendChild(box);
     size += 10;
   }
+  containerEl.appendChild(fragment);
 }
 function destroyBoxes() {
   containerEl.textContent = "";
